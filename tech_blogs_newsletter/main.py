@@ -1,18 +1,25 @@
-from typing import Dict, List
-
-from tech_blogs_newsletter.tech_blogs import TECH_BLOGS
-from tech_blogs_newsletter.tech_blogs.base import Post
+from tech_blogs_newsletter.domain import Newsletter
+from tech_blogs_newsletter.tech_blogs.netflix import Netflix
 
 
-def search_posts() -> Dict[str, List[Post]]:
+TECH_BLOGS = [
+    Netflix(),
+]
 
-    posts = {}
-    for TechBlog in TECH_BLOGS:
-        tech_blog = TechBlog()
-        posts[tech_blog.name] = tech_blog.get_posts()
 
-    return posts
+def search_tech_blogs() -> Newsletter:
+
+    newsletter = Newsletter()
+    for tech_blog in TECH_BLOGS:
+        newsletter.add_blog(
+            blog_name=tech_blog.name,
+            blog=tech_blog.get_blog()
+        )
+
+    print(newsletter)
+
+    return newsletter
 
 
 if __name__ == "__main__":
-    search_posts()
+    search_tech_blogs()

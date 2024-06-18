@@ -1,14 +1,6 @@
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
-from datetime import datetime
-from typing import List
 
-
-@dataclass
-class Post:
-    title: str
-    publication_date: datetime
-    url: str
+from tech_blogs_newsletter.domain import Blog
 
 
 class TechBlog(ABC):
@@ -17,5 +9,5 @@ class TechBlog(ABC):
         self.name = name
 
     @abstractmethod
-    def get_posts(self) -> List[Post]:
+    def get_blog(self) -> Blog:
         pass
