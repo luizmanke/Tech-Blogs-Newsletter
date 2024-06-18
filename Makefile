@@ -9,3 +9,8 @@ run: build
 
 unit-tests: build
 	$(DOCKER_RUN) -v $(PWD)/tests/unit:/app/tests/unit $(DOCKER_IMAGE) pytest
+
+system-tests: build
+	$(DOCKER_RUN) -v $(PWD)/tests/system:/app/tests/system $(DOCKER_IMAGE) pytest
+
+tests: unit-tests system-tests

@@ -18,8 +18,8 @@ Build the project:
 make build
 ```
 
-Run unit tests:
+Run tests:
 
 ```sh
-make unit-tests
+make tests
 ```
