@@ -73,9 +73,8 @@ def test_newsletter_should_stringfy_its_content_to_html():
 
 <h2>fake-name</h2>
 
-<a href="https://url1.com">(2024-06-21 00:00:00) Title 1</a>
-
-<a href="https://url2.com">(2024-06-07 00:00:00) Title 2</a>\
+<a href="https://url1.com">(2024-06-21 00:00:00) Title 1</a><br><br>
+<a href="https://url2.com">(2024-06-07 00:00:00) Title 2</a><br><br>
 """
 
 
@@ -89,5 +88,5 @@ def test_newsletter_should_stringfy_its_content_to_html_even_when_there_are_no_p
 
 <h2>fake-name</h2>
 
-No posts found.\
+No posts found.<br>
 """

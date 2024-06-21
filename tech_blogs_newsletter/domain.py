@@ -48,14 +48,14 @@ class Newsletter(Dict):
         html = "<h1><b>Tech Blogs Newsletter</b></h1>"
 
         for blog_name, blog in self.items():
-            html += f"\n\n<h2>{blog_name}</h2>"
+            html += f"\n\n<h2>{blog_name}</h2>\n\n"
 
             if not blog:
-                html += f"\n\nNo posts found."
+                html += f"No posts found.<br>\n"
                 continue
 
             for post in blog:
                 publication_date = post.publication_date.strftime("%Y-%m-%d %H:%M:%S")
-                html += f'\n\n<a href="{post.url}">({publication_date}) {post.title}</a>'
+                html += f'<a href="{post.url}">({publication_date}) {post.title}</a><br><br>\n'
 
         return html
