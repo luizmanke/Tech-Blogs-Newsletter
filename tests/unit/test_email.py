@@ -1,6 +1,7 @@
 import os
 
 import pytest
+from freezegun import freeze_time
 
 from tech_blogs_newsletter.notification import email
 
@@ -16,6 +17,7 @@ def mock_sender_env_vars(mocker):
     )
 
 
+@freeze_time("2024-06-21")
 def test_send_email_should_send_message_to_the_receivers_list(
     mock_sender_env_vars,
     mocker,
@@ -35,6 +37,8 @@ def test_send_email_should_send_message_to_the_receivers_list(
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
+From: Tech Blogs Newsletter
+Subject: Newsletter 2024-06-21 00:00:00
 
 fake message\
 """
