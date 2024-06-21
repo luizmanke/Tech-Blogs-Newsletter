@@ -7,7 +7,7 @@ TECH_BLOGS = [
 ]
 
 
-def search_tech_blogs() -> Newsletter:
+def search_new_tech_blogs(max_days_since_publication: int = 7) -> Newsletter:
 
     newsletter = Newsletter()
     for tech_blog in TECH_BLOGS:
@@ -16,10 +16,12 @@ def search_tech_blogs() -> Newsletter:
             blog=tech_blog.get_blog()
         )
 
+    newsletter.filter_by_publication_date(max_days_since_publication)
+
     print(newsletter)
 
     return newsletter
 
 
 if __name__ == "__main__":
-    search_tech_blogs()
+    search_new_tech_blogs()

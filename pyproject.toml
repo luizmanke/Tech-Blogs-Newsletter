@@ -22,5 +22,6 @@ test = [
     "pytest>=8.2.2",
 ]
 tests = [
+    "freezegun>=1.5.1",
     "requests-mock>=1.12.1",
 ]

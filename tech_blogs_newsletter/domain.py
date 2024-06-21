@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Dict, List
 
 
@@ -23,6 +23,12 @@ class Blog(List):
             ),
         )
 
+    def filter_by_publication_date(self, max_days_since_publication: int):
+        min_publication_date = datetime.utcnow() - timedelta(days=max_days_since_publication)
+        filtered_posts = list(filter(lambda post: post.publication_date > min_publication_date, self))
+        self.clear()
+        self.extend(filtered_posts)
+
 
 class Newsletter(Dict):
     """A collection of blogs."""
@@ -32,3 +38,7 @@ class Newsletter(Dict):
 
     def get_blog(self, blog_name: str) -> Blog:
         return self[blog_name]
+
+    def filter_by_publication_date(self, max_days_since_publication: int):
+        for blog in self.values():
+            blog.filter_by_publication_date(max_days_since_publication)
