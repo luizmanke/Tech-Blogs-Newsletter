@@ -42,3 +42,20 @@ class Newsletter(Dict):
     def filter_by_publication_date(self, max_days_since_publication: int):
         for blog in self.values():
             blog.filter_by_publication_date(max_days_since_publication)
+
+    def to_html(self) -> str:
+
+        html = "<h1><b>Tech Blogs Newsletter</b></h1>"
+
+        for blog_name, blog in self.items():
+            html += f"\n\n<h2>{blog_name}</h2>"
+
+            if not blog:
+                html += f"\n\nNo posts found."
+                continue
+
+            for post in blog:
+                publication_date = post.publication_date.strftime("%Y-%m-%d %H:%M:%S")
+                html += f'\n\n<a href="{post.url}">({publication_date}) {post.title}</a>'
+
+        return html

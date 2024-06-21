@@ -57,3 +57,37 @@ def test_newsletter_should_filter_posts_by_publication_date():
     assert newsletter.get_blog("fake-name") == [
         domain.Post(title="Title 1", publication_date=datetime(2024, 6, 21), url="https://url1.com"),
     ]
+
+
+def test_newsletter_should_stringfy_its_content_to_html():
+
+    blog = domain.Blog()
+    blog.add_post(title="Title 1", publication_date=datetime(2024, 6, 21), url="https://url1.com")
+    blog.add_post(title="Title 2", publication_date=datetime(2024, 6, 7), url="https://url2.com")
+
+    newsletter = domain.Newsletter()
+    newsletter.add_blog(blog_name="fake-name", blog=blog)
+    
+    assert newsletter.to_html() == """\
+<h1><b>Tech Blogs Newsletter</b></h1>
+
+<h2>fake-name</h2>
+
+<a href="https://url1.com">(2024-06-21 00:00:00) Title 1</a>
+
+<a href="https://url2.com">(2024-06-07 00:00:00) Title 2</a>\
+"""
+
+
+def test_newsletter_should_stringfy_its_content_to_html_even_when_there_are_no_posts():
+
+    newsletter = domain.Newsletter()
+    newsletter.add_blog(blog_name="fake-name", blog=domain.Blog())
+    
+    assert newsletter.to_html() == """\
+<h1><b>Tech Blogs Newsletter</b></h1>
+
+<h2>fake-name</h2>
+
+No posts found.\
+"""
