@@ -88,5 +88,5 @@ def test_newsletter_should_stringfy_its_content_to_html_even_when_there_are_no_p
 
 <h2>fake-name</h2>
 
-No posts found.<br>
+No posts found.<br><br>
 """

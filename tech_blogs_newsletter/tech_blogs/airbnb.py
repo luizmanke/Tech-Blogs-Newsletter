@@ -9,4 +9,4 @@ class Airbnb(TechBlog):
         super().__init__(name="Airbnb")
 
     def get_blog(self) -> Blog:
-        return medium.get_blog(blog_name="airbnbeng")
+        return medium.get_blog(blog_id="53c7c27702d5")

@@ -9,4 +9,4 @@ class Netflix(TechBlog):
         super().__init__(name="Netflix")
 
     def get_blog(self) -> Blog:
-        return medium.get_blog(blog_name="netflixtechblog")
+        return medium.get_blog(blog_id="2615bd06b42e")

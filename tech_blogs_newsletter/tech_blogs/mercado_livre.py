@@ -9,4 +9,4 @@ class MercadoLivre(TechBlog):
         super().__init__(name="Mercado Livre")
 
     def get_blog(self) -> Blog:
-        return medium.get_blog(blog_name="mercadolibre-tech")
+        return medium.get_blog(blog_id="5011f85401f0")

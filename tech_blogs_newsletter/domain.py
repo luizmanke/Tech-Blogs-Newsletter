@@ -51,7 +51,7 @@ class Newsletter(Dict):
             html += f"\n\n<h2>{blog_name}</h2>\n\n"
 
             if not blog:
-                html += f"No posts found.<br>\n"
+                html += f"No posts found.<br><br>\n"
                 continue
 
             for post in blog:
