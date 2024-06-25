@@ -4,11 +4,13 @@ from typing import List
 from tech_blogs_newsletter.domain import Newsletter
 from tech_blogs_newsletter.notification.email import send_email
 from tech_blogs_newsletter.tech_blogs.airbnb import Airbnb
+from tech_blogs_newsletter.tech_blogs.mercado_livre import MercadoLivre
 from tech_blogs_newsletter.tech_blogs.netflix import Netflix
 
 
 TECH_BLOGS = [
     Airbnb(),
+    MercadoLivre(),
     Netflix(),
 ]
 
